@@ -2,83 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ML LAB External – Index Page</title>
+<title>ML Lab External Dashboard</title>
+
 <style>
     body {
+        margin: 0;
         font-family: Arial, sans-serif;
-        margin: 40px;
-        background: #f7f7f7;
+        display: flex;
+        height: 100vh;
     }
-    h1 {
+
+    .sidebar {
+        width: 250px;
+        background: #1a1a1a;
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .sidebar h2 {
         text-align: center;
-        color: #222;
+        margin-bottom: 20px;
     }
-    .box {
+
+    .sidebar button {
+        width: 100%;
+        background: #333;
+        color: white;
+        border: none;
+        padding: 12px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        border-radius: 6px;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .sidebar button:hover {
+        background: #555;
+    }
+
+    .content {
+        flex: 1;
+        padding: 20px;
+        background: #f4f4f4;
+        overflow-y: auto;
+    }
+
+    .message-box {
         background: white;
         padding: 25px;
         border-radius: 10px;
-        width: 80%;
-        margin: auto;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    a {
         font-size: 18px;
-        text-decoration: none;
-        color: #0056ff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    a:hover {
-        text-decoration: underline;
-    }
-    .note {
-        background: #fff3cd;
-        padding: 10px;
-        border-left: 5px solid #ffcc00;
-        margin-bottom: 20px;
-        border-radius: 5px;
+
+    iframe {
+        width: 100%;
+        height: 90vh;
+        border: none;
     }
 </style>
+
+<script>
+function showMessage(text) {
+    document.getElementById("display-area").innerHTML =
+        '<div class="message-box">' + text + '</div>';
+}
+
+function showPDF() {
+    document.getElementById("display-area").innerHTML =
+        '<iframe src="GR22-B.Tech(III-I)-ML-labmanual.pdf"></iframe>';
+}
+</script>
+
 </head>
 <body>
 
-<h1>Machine Learning Lab External</h1>
-
-<div class="box">
-
-<div class="note">
-    <b>IMPORTANT:</b>  
-    Copy the file paths according to <b>your own computer</b>.  
-    Do not use the sample paths shown inside the code files.
-</div>
-
-<h2>📂 Available Files</h2>
-
+<!-- LEFT MENU -->
 <div class="sidebar">
     <h2>ML LAB FILES</h2>
 
-    <button onclick="showContent('task1')">Task 1–6 (Notebook)</button>
-    <button onclick="showContent('task6')">Task 6 – Logistic Regression</button>
-    <button onclick="showContent('task10')">Task 10 – Backpropagation</button>
-    <button onclick="showContent('task11b')">Task 11b – Boosting</button>
-    <button onclick="showContent('manual')">ML Lab Manual</button>
+    <button onclick="showMessage('This contains the Collab Notebook for Task 1–6 (task1_6.ipynb).')">
+        Task 1–6 (Notebook)
+    </button>
+
+    <button onclick="showMessage('This is the Logistic Regression Python file (task6.py).')">
+        Task 6 – Logistic Regression
+    </button>
+
+    <button onclick="showMessage('This is the Backpropagation Python file (task10.py).')">
+        Task 10 – Backpropagation
+    </button>
+
+    <button onclick="showMessage('This is the Boosting Python file (task11b.py).')">
+        Task 11b – Boosting
+    </button>
+
+    <button onclick="showPDF()">
+        ML Lab Manual (PDF)
+    </button>
 </div>
 
-<hr>
-
-<h2>📌 Instructions for Students</h2>
-
-<ul>
-    <li>Download each file by clicking the links above.</li>
-    <li>Open Python files in <b>VS Code / PyCharm / Jupyter</b>.</li>
-    <li>Wherever a dataset path appears (example: <code>C:\Users\kommu\Downloads\diabetes.csv</code>),  
-        <b>replace it with the correct path from your system</b>.</li>
-</ul>
-
-<hr>
-
-<p style="text-align:center; color:#444; margin-top:20px;">
-    © ML Lab External | Prepared for Students
-</p>
-
+<!-- MAIN VIEWER -->
+<div class="content" id="display-area">
+    <div class="message-box">
+        Select any file from the left menu to view information.
+    </div>
 </div>
 
 </body>
